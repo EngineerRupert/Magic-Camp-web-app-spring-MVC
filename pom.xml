@@ -11,9 +11,10 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <!--dependencies-->
+        <!--dependencies version-->
         <hibernate>5.6.0.Final</hibernate>
         <h2.base>1.4.200</h2.base>
+        <junit.jupiter>5.7.2</junit.jupiter>
     </properties>
 
     <dependencies>
@@ -34,6 +35,14 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.base}</version>
+        </dependency>
+
+        <!--Tests-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit.jupiter}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
