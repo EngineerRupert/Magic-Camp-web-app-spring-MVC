@@ -1,7 +1,13 @@
 package ru.magiccamp.project.model;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.stereotype.Component;
 
+import javax.persistence.*;
+import java.util.Objects;
+
+@Component
 @Entity
 @Table(name = "Users")
 public class User {
@@ -14,6 +20,7 @@ public class User {
     private String login;
 
     @Column(nullable = false, length = 150)
+    @JsonIgnore
     private String password;
 
     @Column(length = 100)
@@ -24,6 +31,10 @@ public class User {
 
     @Column(length = 150)
     private String yearOfBirthSign;
+
+    @Column
+    @ColumnDefault("false")
+    private boolean isAdmin;
 
     public User() {
 
@@ -80,5 +91,35 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id && login.equals(user.login) && password.equals(user.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, login, password);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }
