@@ -1,0 +1,38 @@
+package ru.magiccamp.project.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
+import ru.magiccamp.project.dao.UserDao;
+import ru.magiccamp.project.model.User;
+
+
+@Component
+public class DetailsService implements UserDetailsService {
+
+    @Autowired
+    public UserDao userDao;
+
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        User found = userDao.findByLoginOrId(s);
+        if (found == null) {
+            throw new UsernameNotFoundException("User " + s + " not found");
+        }
+
+        String[] roles;
+        if (found.isAdmin()) {
+            roles = new String[] { "USER", "ADMIN" };
+        } else {
+            roles = new String[] { "USER" };
+        }
+
+        return org.springframework.security.core.userdetails.User.withUsername(s)
+                .password(found.getPassword())
+                .roles(roles)
+                .build();
+    }
+
+}
