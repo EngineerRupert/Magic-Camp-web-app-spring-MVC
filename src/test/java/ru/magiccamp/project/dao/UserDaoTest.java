@@ -1,50 +1,44 @@
 package ru.magiccamp.project.dao;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import ru.magiccamp.project.model.User;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+@SpringBootTest
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class UserDaoTest {
 
-    private EntityManagerFactory entityManagerFactory;
-    private EntityManager entityManager;
+    private User user;
+
+    @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private EntityManager entityManager;
 
     @BeforeEach
     void setUp() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("TestPersistenceUnit");
-        entityManager = entityManagerFactory.createEntityManager();
-        userDao = new UserDao(entityManager);
-    }
-
-    @AfterEach
-    void tearDown() {
-        if (entityManager != null) {
-            entityManager.close();
-        }
-        if (entityManagerFactory != null) {
-            entityManagerFactory.close();
-        }
+        user = userDao.createUser("userLogin", "userPassword");
     }
 
     @Test
     void createUser() {
-        User user = userDao.createUser("userLogin", "userPassword");
-
-        Assertions.assertNotNull(user);
-        Assertions.assertEquals("userLogin", user.getLogin());
-        Assertions.assertEquals("userPassword", user.getPassword());
+        assertNotNull(user);
+        assertEquals(user, entityManager.find(User.class, user.getId()));
     }
+
 
     @Test
     void findByLoginOrId() {
-        User user = userDao.createUser("userLogin", "userPassword");
         User userResult1 = userDao.findByLoginOrId(1);
         User userResult2 = userDao.findByLoginOrId("userLogin");
 
