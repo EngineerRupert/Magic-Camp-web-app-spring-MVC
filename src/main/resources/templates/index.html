@@ -14,16 +14,28 @@
                     <div>войти</div>
                 </a>
             </td>
-
             <td>
                 <a href="/user/register" class="alinks" th:if="${not loggedIn}">
                     <div>зарегистрироваться</div>
                 </a>
             </td>
-            <td style="display: flex;">
-                <div style="padding-right: 7px" th:if="${loggedIn}" th:text="${getLogin} + ' '" >user</div>
+            <td>
+                <div th:if="${loggedIn}" th:text="${getLogin}" ></div>
+            </td>
+            <td>
+                <a href="/profile" class="alinks" th:if="${loggedIn}">
+                    <button type="submit">профиль</button>
+                </a>
+            </td>
+            <td>
+                <a href="/edit-profile" class="alinks" th:if="${loggedIn}">
+                    <button type="submit">редактировать профиль</button>
+                </a>
+            </td>
+
+            <td>
                 <form action="/logout" method="post" th:if="${loggedIn}">
-                    <button id="endbtn" type="submit" >выйти</button>
+                    <button type="submit" >выйти</button>
                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                 </form>
             </td>
