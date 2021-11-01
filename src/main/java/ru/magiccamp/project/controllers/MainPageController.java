@@ -1,6 +1,5 @@
 package ru.magiccamp.project.controllers;
 
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -61,11 +60,6 @@ public class MainPageController {
         }
         userDao.updateUserInfo(newUser);
         return "redirect:/";
-    }
-
-    @ModelAttribute("userForm")
-    public User createDefault() {
-        return new User();
     }
 
     @GetMapping("/profile")
