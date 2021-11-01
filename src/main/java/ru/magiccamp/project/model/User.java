@@ -23,6 +23,9 @@ public class User {
     @JsonIgnore
     private String password;
 
+    @Column(length = 150)
+    private String name;
+
     @Column(length = 100)
     private String dataOfBirth;
 
@@ -93,17 +96,25 @@ public class User {
         this.password = password;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && login.equals(user.login) && password.equals(user.password);
+        return id == user.id && Objects.equals(login, user.login) && Objects.equals(password, user.password) && Objects.equals(name, user.name) && Objects.equals(dataOfBirth, user.dataOfBirth) && Objects.equals(zodiacSign, user.zodiacSign) && Objects.equals(yearOfBirthSign, user.yearOfBirthSign);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, password);
+        return Objects.hash(id, login, password, name, dataOfBirth, zodiacSign, yearOfBirthSign);
     }
 
     @Override
@@ -112,6 +123,10 @@ public class User {
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", dataOfBirth='" + dataOfBirth + '\'' +
+                ", zodiacSign='" + zodiacSign + '\'' +
+                ", yearOfBirthSign='" + yearOfBirthSign + '\'' +
                 '}';
     }
 
