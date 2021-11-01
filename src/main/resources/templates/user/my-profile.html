@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="mainbodycard">
+    <h1>Magic Camp</h1>
+    <table border="0" cellpadding="1" cellspacing="9" style="margin-right: auto;margin-left: auto;font-weight: bold;">
+        <tbody>
+        <tr>
+            <td>
+                <div th:text="${getLogin}" ></div>
+            </td>
+            <td>
+                <a href="/edit-profile" class="alinks">
+                    <button type="submit">редактировать профиль</button>
+                </a>
+            </td>
+            <td>
+                <form action="/logout" method="post">
+                    <button type="submit">выйти</button>
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="padding50"></div>
+
+        <table align="center" border="0" cellpadding="1" cellspacing="1" style="max-width: 500px">
+            <tbody>
+            <tr>
+                <td>
+                    <p>
+                        Имя:
+                    </p>
+                </td>
+                <td>
+                    <div th:text="${userForForm.getName}" class="profile">user</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        Дата рождения:
+                    </p>
+                </td>
+                <td>
+                    <div th:text="${userForForm.getDataOfBirth}" class="profile">user</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        Знак задиака:
+                    </p>
+                </td>
+                <td>
+                    <div th:text="${userForForm.getZodiacSign}" class="profile">user</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        В год кого:
+                    </p>
+                </td>
+                <td>
+                    <div th:text="${userForForm.getYearOfBirthSign}" class="profile">user</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    <div class="padding50"></div>
+
+    <div class="menu-area">
+        <a href="/" class="alinks">
+            <div class="menu_button" style="margin-right: auto;margin-left: auto;">В главное меню</div>
+        </a>
+    </div>
+
+</body>
+</html>
