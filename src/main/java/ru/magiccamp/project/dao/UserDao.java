@@ -50,4 +50,15 @@ public class UserDao {
             return null;
         }
     }
+
+    public void updateUserInfo(User user) {
+        entityManager.getTransaction().begin();
+        try {
+            entityManager.persist(user);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw e;
+        }
+    }
 }
