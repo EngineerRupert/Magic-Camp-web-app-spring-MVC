@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/user/log-in", "/user/register", "/log-in").permitAll()
                 .antMatchers("/**/*.css").permitAll()
                 .antMatchers(HttpMethod.GET).permitAll()
-                .antMatchers( "/user/**").authenticated()
+                .antMatchers( "/user/**", "/edit-profile", "/profile").authenticated()
                 .antMatchers("/api/*").authenticated()
                 .anyRequest().denyAll();
 
