@@ -18,10 +18,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf();
 
         http.authorizeRequests()
-                .antMatchers("/", "/user/log-in", "/user/register", "/log-in", "/horoscope/**").permitAll()
+                .antMatchers("/", "/user/log-in", "/user/register", "/log-in").permitAll()
                 .antMatchers("/**/*.css").permitAll()
                 .antMatchers(HttpMethod.GET).permitAll()
-                .antMatchers( "/user/**", "/edit-profile", "/profile").authenticated()
+                .antMatchers( "/user/**", "/edit-profile", "/profile", "/horoscope/*").authenticated()
                 .antMatchers("/api/*").authenticated()
                 .anyRequest().denyAll();
 
