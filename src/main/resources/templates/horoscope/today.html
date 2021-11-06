@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="mainbody">
+    <h1>Magic Camp</h1>
+    <div class="padding50"></div>
+    <h2>Гороскоп на сегодня:</h2>
+    <div class="padding15"></div>
+    <div class="menu-area" style="width: fit-content!important;">
+
+        <table border="0" cellpadding="1" cellspacing="9" style="width: 500px">
+            <tbody>
+            <tr>
+                <td>
+                    <div th:text="${bodyOfHoroscope}" class="text-horoscope"></div>
+                </td>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
