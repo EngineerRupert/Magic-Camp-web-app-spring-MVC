@@ -42,4 +42,32 @@ public class ChooseHoroscopeController {
         return "/horoscope/today";
     }
 
+    @GetMapping("/horoscope/tomorrow")
+    public String onTomorrowHoroscope(
+            Authentication authentication,
+            Model model
+    ) throws IOException {
+        User user = userDao.findByLoginOrId(authentication.getName());
+        Horoscope horoscope = horoscopeParser.getHoroscope(user.getZodiacSign(),"tomorrow");
+
+        model.addAttribute("bodyOfHoroscope", horoscope.getBody());
+        model.addAttribute("signZodiac", user.getZodiacSign());
+
+        return "/horoscope/tomorrow";
+    }
+
+    @GetMapping("/horoscope/week")
+    public String onWeekHoroscope(
+            Authentication authentication,
+            Model model
+    ) throws IOException {
+        User user = userDao.findByLoginOrId(authentication.getName());
+        Horoscope horoscope = horoscopeParser.getHoroscope(user.getZodiacSign(),"week");
+
+        model.addAttribute("bodyOfHoroscope", horoscope.getBody());
+        model.addAttribute("signZodiac", user.getZodiacSign());
+
+        return "/horoscope/week";
+    }
+
 }
