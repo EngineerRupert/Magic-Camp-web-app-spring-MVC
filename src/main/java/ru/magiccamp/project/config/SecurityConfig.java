@@ -20,8 +20,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/user/log-in", "/user/register", "/log-in").permitAll()
                 .antMatchers("/**/*.css").permitAll()
-                .antMatchers(HttpMethod.GET).permitAll()
-                .antMatchers( "/user/**", "/edit-profile", "/profile", "/horoscope/*").authenticated()
+//                .antMatchers(HttpMethod.GET).permitAll()
+                .antMatchers( "/user/**", "/edit-profile", "/profile", "/choose-horoscope", "/horoscope/**").authenticated()
                 .antMatchers("/api/*").authenticated()
                 .anyRequest().denyAll();
 
