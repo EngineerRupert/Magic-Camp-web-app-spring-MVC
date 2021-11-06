@@ -46,16 +46,16 @@ public class MainPageController {
     ) {
         String userName = authentication.getName();
         User newUser = userDao.findByLoginOrId(userName);
-        if(user.getName() != null) {
+        if(!user.getName().isEmpty()) {
             newUser.setName(user.getName());
         }
-        if(user.getDataOfBirth() != null) {
+        if(!user.getDataOfBirth().isEmpty()) {
             newUser.setDataOfBirth(user.getDataOfBirth());
         }
-        if(user.getZodiacSign() != null) {
+        if(!user.getZodiacSign().isEmpty()) {
             newUser.setZodiacSign(user.getZodiacSign());
         }
-        if(user.getYearOfBirthSign() != null) {
+        if(!user.getYearOfBirthSign().isEmpty()) {
             newUser.setYearOfBirthSign(user.getYearOfBirthSign());
         }
         userDao.updateUserInfo(newUser);
