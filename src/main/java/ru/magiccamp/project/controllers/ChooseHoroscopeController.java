@@ -14,7 +14,7 @@ import ru.magiccamp.project.service.HoroscopeParser;
 import java.io.IOException;
 
 @Controller
-@RequestMapping(path = "/horoscope")
+@RequestMapping
 public class ChooseHoroscopeController {
 
     @Autowired
@@ -28,14 +28,17 @@ public class ChooseHoroscopeController {
         return "/horoscope/choose-horoscope";
     }
 
-    @GetMapping("/today")
+    @GetMapping("/horoscope/today")
     public String onTodayHoroscope(
             Authentication authentication,
             Model model
             ) throws IOException {
         User user = userDao.findByLoginOrId(authentication.getName());
         Horoscope horoscope = horoscopeParser.getHoroscope(user.getZodiacSign(),"today");
+
         model.addAttribute("bodyOfHoroscope", horoscope.getBody());
+        model.addAttribute("signZodiac", user.getZodiacSign());
+
         return "/horoscope/today";
     }
 
