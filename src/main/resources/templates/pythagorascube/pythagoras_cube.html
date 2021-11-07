@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="mainbody">
+    <h1>Magic Camp</h1>
+    <div class="padding50"></div>
+    <h2>Психоматрица Пифагора по дате рождения:</h2>
+    <div class="padding15"></div>
+    <div class="menu-area" style="width: fit-content!important;">
+
+        <table border="0" cellpadding="1" cellspacing="9" style="width: 550px">
+            <tbody>
+            <tr>
+                <td>
+                    <div th:text="'Ваш персональный номер: ' + ${yourNumber}" class="title"></div>
+                </td>
+            </tr>
+            <tr>
+                <td style="border:3px solid;border-radius:6px;padding:12px;">
+                    <div class="text-of-page" style="height: 13px;text-align: center;">Ваши цифры:</div>
+                    <center>
+                        <div th:each="mapEntry: ${decodingNumbers}" class="text-of-page" style="height: 13px;display: inline-block">
+                            <p th:text="${mapEntry.value} + '&nbsp; &nbsp;'"></p>
+                        </div>
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="text-of-page">
+                        <br/><br/>
+                        <b style="text-decoration:underline">Значение количества единиц:</b>
+                        <br/><br/>
+                        1. Характер в психоматрице оценивается по приведенным ниже интерпретациям соответствующего
+                        показателя.
+                        <br/>
+                        «<b style="text-decoration:underline">1</b>». Слабая воля, эгоизм и тщеславие. Постоянные попытки казаться сильнее и значительнее,
+                        чем это есть на самом деле. Но результаты никак не соответствуют претензиям.
+                        <br/>
+                        «<b style="text-decoration:underline">11</b>». Возможно, самооценка человека – слегка занижена, однако это не мешает ему строить
+                        нормальные отношения с окружающими и слыть «добрым малым». А он любит, когда его хвалят.
+                        <br/>
+                        «<b style="text-decoration:underline">111</b>». Сильный и ровный характер. Если случаются проявления неуступчивости, то лишь в
+                        принципиальных вопросах, когда компромисс невозможен.
+                        <br/>
+                        «<b style="text-decoration:underline">1111</b>». Явный лидер, умеющий видеть цель, и идти к ней, используя всех, кто может
+                        оказаться полезен. По этой причине в отношениях с окружающими нередко возникают сложности.
+                        <br/>
+                        «<b style="text-decoration:underline">11111</b>». Безусловное стремление к доминированию. Для человека возможен лишь один тип
+                        взаимоотношений – отношения начальника и подчиненного. Дружеские связи практически исключаются.
+                        <br/>
+                        «<b style="text-decoration:underline">111111</b> и более». Перегруз качества, определяющий характер, близкий к показателю «1».
+                        Неуемные амбиции нивелируются мизерностью результатов. Однако на меньшее человек никогда не
+                        согласится, и будет жестоко от этого страдать.
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="padding15"></div>
+
+        <a href="/" class="alinks">
+            <div class="menu_button" style="margin-right: auto;margin-left: auto;">В главное меню</div>
+        </a>
+
+    </div>
+</div>
+</body>
+</html>
