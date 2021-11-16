@@ -27,7 +27,7 @@ public class PythagorasCubeController {
     ) {
         User user = userDao.findByLoginOrId(authentication.getName());
         String personalNumber = pythagorasCubeService.yourNumberСalculation(user.getDataOfBirth());
-        Map<Integer, String> numbersOfFate = pythagorasCubeService.numberOfDigitsСalculation(personalNumber);
+        var numbersOfFate = pythagorasCubeService.numberOfDigitsСalculation(personalNumber);
 
         model.addAttribute("yourNumber", personalNumber);
         model.addAttribute("decodingNumbers", numbersOfFate);
