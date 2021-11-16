@@ -9,8 +9,6 @@ import ru.magiccamp.project.dao.UserDao;
 import ru.magiccamp.project.model.User;
 import ru.magiccamp.project.service.PythagorasCubeService;
 
-import java.util.Map;
-
 @Controller
 public class PythagorasCubeController {
 
