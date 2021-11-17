@@ -14,7 +14,8 @@ public class NameDecryption {
         var sum = List.of(name.trim().toLowerCase().split(""))
                 .stream()
                 .map(o -> mapOfCharsAndDigits.get(o))
-                .mapToInt(e -> e).sum();
+                .mapToInt(e -> e)
+                .sum();
         return List.of(String.valueOf(sum).trim().split(""))
                 .stream()
                 .mapToInt(e -> Integer.parseInt(e))
