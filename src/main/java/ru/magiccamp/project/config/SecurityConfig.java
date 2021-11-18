@@ -30,7 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/profile",
                         "/choose-horoscope",
                         "/horoscope/**",
-                        "/pythagoras-cube/**").authenticated()
+                        "/pythagoras-cube/**",
+                        "/name-decryption").authenticated()
                 .antMatchers("/api/*").authenticated()
                 .anyRequest().denyAll();
 
