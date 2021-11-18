@@ -112,3 +112,8 @@ text-align: justify;
 font-weight: bold;
 line-height: 26px;
 }
+
+.spoiler {
+cursor: pointer;
+width: fit-content;
+}
