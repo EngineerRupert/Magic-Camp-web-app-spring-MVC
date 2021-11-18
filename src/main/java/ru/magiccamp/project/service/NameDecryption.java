@@ -24,7 +24,7 @@ public class NameDecryption {
 
     private Map<String, Integer> mapOfChars() {
         Map<String, Integer> map = new HashMap<>();
-        map.put("a", 1);
+        map.put("а", 1);
         map.put("б", 2);
         map.put("в", 3);
         map.put("г", 4);
