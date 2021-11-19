@@ -9,6 +9,9 @@ import java.util.Map;
 @Component
 public class NameDecryption {
 
+    // сервис который расшифровывает / рассчитывает имя в число
+    // a service that decrypts / calculates the name into a number
+
     public int nameDecryption(String name) {
         var mapOfCharsAndDigits = mapOfChars();
         var sum = List.of(name.trim().toLowerCase().split(""))

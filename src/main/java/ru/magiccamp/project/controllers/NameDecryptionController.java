@@ -24,7 +24,6 @@ public class NameDecryptionController {
             Model model
     ) {
         User user = userDao.findByLoginOrId(authentication.getName());
-        System.out.println(user.getName());
         var numberOfUserFromName = nameDecryption.nameDecryption(user.getName());
 
         model.addAttribute("numberOfUser", numberOfUserFromName);

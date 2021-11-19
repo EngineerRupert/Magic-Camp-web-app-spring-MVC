@@ -2,7 +2,6 @@ package ru.magiccamp.project.service;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 import ru.magiccamp.project.model.Horoscope;
@@ -11,6 +10,9 @@ import java.io.IOException;
 
 @Component
 public class HoroscopeParser {
+
+    // Jsoup парсер гороскопа, который динамически может показывать гороскоп на сегодня, на завтра, на неделю
+    // Jsoup horoscope parser that can dynamically show the horoscope for today, for tomorrow, for a week
 
     public Horoscope getHoroscope(String zodiacSign, String timeRange) throws IOException {
         zodiacSign = traslateOnEng(zodiacSign);

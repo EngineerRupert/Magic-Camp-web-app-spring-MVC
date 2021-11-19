@@ -15,6 +15,9 @@ import ru.magiccamp.project.model.User;
 @RequestMapping(path = "/")
 public class MainPageController {
 
+    // контроллер отвечающий за главную страницу, а также за профиль пользователя
+    // controller responsible for the main page, as well as for the user profile
+
     @Autowired
     private UserDao userDao;
 

@@ -5,7 +5,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import ru.magiccamp.project.dao.UserDao;
 import ru.magiccamp.project.model.Horoscope;
 import ru.magiccamp.project.model.User;
@@ -14,8 +13,10 @@ import ru.magiccamp.project.service.HoroscopeParser;
 import java.io.IOException;
 
 @Controller
-@RequestMapping
 public class ChooseHoroscopeController {
+
+    // контроллер отвечающий за действие связанные с гороскопом
+    // the controller responsible for the action associated with the horoscope
 
     @Autowired
     UserDao userDao;

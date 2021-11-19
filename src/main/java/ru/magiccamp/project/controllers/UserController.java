@@ -19,8 +19,8 @@ import javax.validation.Valid;
 @RequestMapping(path = "/user")
 public class UserController {
 
-    // rus: контроллер отвечающий за общие действия пользователя
-    // eng: controller responsible for general user actions
+    // контроллер отвечающий за общие действия пользователя
+    // controller responsible for general user actions
 
     @Autowired
     private UserDao userDao;

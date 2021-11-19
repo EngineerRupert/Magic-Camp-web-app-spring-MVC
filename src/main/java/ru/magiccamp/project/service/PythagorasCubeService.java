@@ -11,6 +11,11 @@ import static java.lang.String.valueOf;
 @Component
 public class PythagorasCubeService {
 
+    // сервис квадрата Пифагора, который расчитывает число из даты рождения,
+    // а так же другим методом расчитывается число вхождения цифр в этом числе.
+    // the service of the Pythagorean square, which calculates the number from the date of birth,
+    // and also calculates the number of occurrences of digits in this number by another method.
+
     public String yourNumberСalculation(String dataOfBirth) {
         String dataOfBirthFormated = dataOfBirth.replace(".","").trim();
         int sumOfDaysAndMonths = 0;

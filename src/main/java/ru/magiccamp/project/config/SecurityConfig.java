@@ -2,7 +2,6 @@ package ru.magiccamp.project.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -23,7 +22,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/user/register",
                         "/log-in").permitAll()
                 .antMatchers("/**/*.css").permitAll()
-//                .antMatchers(HttpMethod.GET).permitAll()
                 .antMatchers(
                         "/user/**",
                         "/edit-profile",

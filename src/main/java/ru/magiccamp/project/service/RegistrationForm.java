@@ -6,6 +6,9 @@ import javax.validation.constraints.Size;
 
 public class RegistrationForm {
 
+    // модель для валидации формы регистрации
+    // a model for validating the registration form
+
     @NotBlank
     @Size(min = 4, max = 10)
     @Pattern(regexp = "[a-zA-Z0-9]*",
