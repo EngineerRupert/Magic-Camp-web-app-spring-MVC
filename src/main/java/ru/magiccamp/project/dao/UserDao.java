@@ -2,6 +2,7 @@ package ru.magiccamp.project.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.magiccamp.project.model.User;
 
 import javax.persistence.EntityManager;
@@ -13,16 +14,10 @@ public class UserDao {
     @Autowired
     private EntityManager entityManager;
 
+    @Transactional
     public User createUser(String login, String password) {
         User user = new User(login, password);
-        entityManager.getTransaction().begin();
-        try {
-            entityManager.persist(user);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            entityManager.getTransaction().rollback();
-            throw e;
-        }
+        entityManager.persist(user);
         return user;
     }
 
@@ -51,14 +46,8 @@ public class UserDao {
         }
     }
 
+    @Transactional
     public void updateUserInfo(User user) {
-        entityManager.getTransaction().begin();
-        try {
-            entityManager.persist(user);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            entityManager.getTransaction().rollback();
-            throw e;
-        }
+        entityManager.persist(user);
     }
 }
