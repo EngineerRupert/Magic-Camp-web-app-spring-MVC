@@ -2,11 +2,13 @@ package ru.magiccamp.project.service;
 
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.String.valueOf;
+import static java.util.Collections.unmodifiableMap;
 
 @Component
 public class PythagorasCubeService {
@@ -64,7 +66,7 @@ public class PythagorasCubeService {
             }
         }
 
-        return hashMapOfNumbers;
+        return unmodifiableMap(hashMapOfNumbers);
     }
 
 }
