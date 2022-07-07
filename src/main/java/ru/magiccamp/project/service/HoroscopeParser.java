@@ -15,7 +15,7 @@ public class HoroscopeParser {
     // Jsoup horoscope parser that can dynamically show the horoscope for today, for tomorrow, for a week
 
     public Horoscope getHoroscope(String zodiacSign, String timeRange) throws IOException {
-        zodiacSign = traslateOnEng(zodiacSign);
+        zodiacSign = translateOnEng(zodiacSign);
         Document document = Jsoup.connect(
                 "https://horo.mail.ru/prediction/" + zodiacSign + "/" + timeRange + "/"
         ).get();
@@ -23,7 +23,7 @@ public class HoroscopeParser {
         return new Horoscope(bodyOfHoroscope.get(0).child(0).text());
     }
 
-    private String traslateOnEng(String element) {
+    private String translateOnEng(String element) {
         if (element.equals("Овен")) {
            element = "aries";
         }
