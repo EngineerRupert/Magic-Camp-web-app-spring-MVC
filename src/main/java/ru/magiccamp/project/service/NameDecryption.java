@@ -2,9 +2,12 @@ package ru.magiccamp.project.service;
 
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static java.util.Collections.*;
 
 @Component
 public class NameDecryption {
@@ -48,7 +51,7 @@ public class NameDecryption {
         mapResultNumbers.putAll(Map.of(
                 "э", 4,"ю", 5,"я", 6
         ));
-        return mapResultNumbers;
+        return unmodifiableMap(mapResultNumbers);
     }
 
 }
